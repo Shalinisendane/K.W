@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DUDU ❤️ BUBU Love Story</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+overflow-x:hidden;
+background:linear-gradient(135deg,#ff4d6d,#ff8fa3,#ffc2d1);
+color:white;
+}
+
+/* BACKGROUND */
+
+.stars{
+position:fixed;
+width:100%;
+height:100%;
+background-image:radial-gradient(white 1px, transparent 1px);
+background-size:40px 40px;
+opacity:0.3;
+z-index:-2;
+}
+
+.hearts{
+position:fixed;
+width:100%;
+height:100%;
+overflow:hidden;
+z-index:-1;
+}
+
+.hearts span{
+position:absolute;
+bottom:-100px;
+font-size:25px;
+animation:float 12s linear infinite;
+}
+
+.hearts span:nth-child(1){left:10%;animation-delay:0s;}
+.hearts span:nth-child(2){left:30%;animation-delay:2s;}
+.hearts span:nth-child(3){left:50%;animation-delay:4s;}
+.hearts span:nth-child(4){left:70%;animation-delay:1s;}
+.hearts span:nth-child(5){left:90%;animation-delay:3s;}
+
+@keyframes float{
+0%{
+transform:translateY(0) rotate(0deg);
+opacity:1;
+}
+100%{
+transform:translateY(-1200px) rotate(360deg);
+opacity:0;
+}
+}
+
+/* LOGIN */
+
+#loginPage{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.login-box{
+width:360px;
+padding:40px;
+background:rgba(255,255,255,0.12);
+border-radius:25px;
+backdrop-filter:blur(10px);
+text-align:center;
+box-shadow:0 0 30px rgba(0,0,0,0.3);
+animation:zoom 3s infinite alternate;
+}
+
+@keyframes zoom{
+from{transform:scale(1);}
+to{transform:scale(1.03);}
+}
+
+.login-box h1{
+font-size:40px;
+margin-bottom:20px;
+}
+
+.login-box p{
+margin-bottom:20px;
+}
+
+.login-box input{
+width:100%;
+padding:14px;
+margin:10px 0;
+border:none;
+border-radius:10px;
+outline:none;
+}
+
+.login-box button{
+margin-top:15px;
+padding:14px 30px;
+border:none;
+border-radius:30px;
+background:#ff0055;
+color:white;
+font-size:18px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.login-box button:hover{
+transform:scale(1.1);
+}
+
+#error{
+margin-top:15px;
+color:yellow;
+}
+
+/* STORY PAGE */
+
+#storyPage{
+display:none;
+}
+
+section{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+padding:40px 20px;
+position:relative;
+overflow:hidden;
+}
+
+/* STORY TEXT */
+
+.story-text{
+max-width:900px;
+font-size:28px;
+line-height:1.8;
+text-align:center;
+margin-top:30px;
+animation:fade 3s ease;
+text-shadow:0 0 10px rgba(0,0,0,0.4);
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(50px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* CHARACTERS */
+
+.scene{
+position:relative;
+width:100%;
+height:400px;
+}
+
+.character{
+position:absolute;
+width:120px;
+height:240px;
+animation:bounce 2s infinite;
+}
+
+/* HEAD */
+
+.head{
+width:70px;
+height:70px;
+background:#ffe0bd;
+border-radius:50%;
+position:absolute;
+top:0;
+left:25px;
+}
+
+.hair-boy{
+width:75px;
+height:35px;
+background:black;
+border-radius:50px 50px 20px 20px;
+position:absolute;
+top:-5px;
+left:-2px;
+}
+
+.hair-girl{
+width:80px;
+height:90px;
+background:black;
+border-radius:50px;
+position:absolute;
+top:-5px;
+left:-5px;
+z-index:-1;
+}
+
+.eye{
+width:8px;
+height:8px;
+background:black;
+border-radius:50%;
+position:absolute;
+top:30px;
+}
+
+.left-eye{left:18px;}
+.right-eye{right:18px;}
+
+.smile{
+width:25px;
+height:12px;
+border-bottom:3px solid red;
+border-radius:0 0 30px 30px;
+position:absolute;
+top:45px;
+left:22px;
+}
+
+/* BODY */
+
+.body-boy{
+width:90px;
+height:110px;
+background:#0077ff;
+position:absolute;
+top:70px;
+left:15px;
+border-radius:20px;
+}
+
+.body-girl{
+width:90px;
+height:110px;
+background:#ff1493;
+position:absolute;
+top:70px;
+left:15px;
+border-radius:20px;
+}
+
+/* ARMS */
+
+.arm{
+width:18px;
+height:80px;
+background:#ffe0bd;
+position:absolute;
+top:75px;
+border-radius:20px;
+}
+
+.arm-left{
+left:0;
+animation:leftArm 2s infinite;
+}
+
+.arm-right{
+right:0;
+animation:rightArm 2s infinite;
+}
+
+/* LEGS */
+
+.leg{
+width:18px;
+height:90px;
+background:#222;
+position:absolute;
+bottom:0;
+border-radius:20px;
+}
+
+.leg-left{left:35px;}
+.leg-right{right:35px;}
+
+@keyframes bounce{
+0%,100%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(-15px);
+}
+}
+
+@keyframes leftArm{
+0%,100%{
+transform:rotate(20deg);
+}
+50%{
+transform:rotate(-20deg);
+}
+}
+
+@keyframes rightArm{
+0%,100%{
+transform:rotate(-20deg);
+}
+50%{
+transform:rotate(20deg);
+}
+}
+
+/* SCENE ANIMATIONS */
+
+.meet-boy{
+left:-150px;
+bottom:20px;
+animation:boyMeet 8s forwards;
+}
+
+.meet-girl{
+right:-150px;
+bottom:20px;
+animation:girlMeet 8s forwards;
+}
+
+@keyframes boyMeet{
+0%{left:-150px;}
+100%{left:38%;}
+}
+
+@keyframes girlMeet{
+0%{right:-150px;}
+100%{right:38%;}
+}
+
+.friend-boy{
+left:35%;
+bottom:30px;
+animation:walk 2s infinite alternate;
+}
+
+.friend-girl{
+right:35%;
+bottom:30px;
+animation:walk 2s infinite alternate;
+}
+
+@keyframes walk{
+from{transform:translateX(-10px);}
+to{transform:translateX(10px);}
+}
+
+/* LOVE HEART */
+
+.love-heart{
+font-size:120px;
+animation:heartbeat 1s infinite;
+margin-top:20px;
+}
+
+@keyframes heartbeat{
+0%{transform:scale(1);}
+50%{transform:scale(1.2);}
+100%{transform:scale(1);}
+}
+
+/* LONG DISTANCE */
+
+.left-side{
+left:10%;
+bottom:20px;
+}
+
+.right-side{
+right:10%;
+bottom:20px;
+}
+
+.connect{
+position:absolute;
+top:50%;
+left:25%;
+width:50%;
+height:4px;
+background:white;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{opacity:0.3;}
+to{opacity:1;}
+}
+
+/* FINAL */
+
+.final-title{
+font-size:70px;
+animation:finalGlow 2s infinite alternate;
+text-align:center;
+}
+
+@keyframes finalGlow{
+from{
+text-shadow:0 0 10px white;
+}
+to{
+text-shadow:0 0 40px #ff0055;
+}
+}
+
+.hug{
+font-size:150px;
+margin-top:30px;
+animation:bounce 2s infinite;
+}
+
+.kiss{
+font-size:70px;
+margin-top:20px;
+animation:heartbeat 1s infinite;
+}
+
+@media(max-width:768px){
+
+.story-text{
+font-size:20px;
+}
+
+.final-title{
+font-size:40px;
+}
+
+.scene{
+transform:scale(0.7);
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<div class="hearts">
+<span>❤️</span>
+<span>💖</span>
+<span>💕</span>
+<span>💘</span>
+<span>❤️</span>
+</div>
+
+<!-- LOGIN -->
+
+<div id="loginPage">
+
+<div class="login-box">
+
+<h1>💖 DUDU 💖</h1>
+
+<p>A Special Filmy Surprise From BUBU ✨</p>
+
+<input type="text" id="user" placeholder="Enter User ID">
+
+<input type="password" id="pass" placeholder="Enter Password">
+
+<button onclick="login()">Open Love Story 🎬</button>
+
+<p id="error"></p>
+
+</div>
+
+</div>
+
+<!-- STORY -->
+
+<div id="storyPage">
+
+<!-- INTRO -->
+
+<section>
+
+<h1 class="final-title">
+🎂HAPPY BIRTHDAY MY DUDU🎂
+</h1>
+
+<div class="hug">🧑‍❤️‍👧</div>
+
+<div class="story-text">
+✨ “Every beautiful love story starts with one unexpected moment...” ✨
+</div>
+
+</section>
+
+<!-- CHAPTER 1 -->
+
+<section>
+
+<div class="scene">
+
+<div class="character meet-boy">
+
+<div class="head">
+<div class="hair-boy"></div>
+<div class="eye left-eye"></div>
+<div class="eye right-eye"></div>
+<div class="smile"></div>
+</div>
+
+<div class="body-boy"></div>
+
+<div class="arm arm-left"></div>
+<div class="arm arm-right"></div>
+
+<div class="leg leg-left"></div>
+<div class="leg leg-right"></div>
+
+</div>
+
+<div class="character meet-girl">
+
+<div class="head">
+<div class="hair-girl"></div>
+<div class="eye left-eye"></div>
+<div class="eye right-eye"></div>
+<div class="smile"></div>
+</div>
+
+<div class="body-girl"></div>
+
+<div class="arm arm-left"></div>
+<div class="arm arm-right"></div>
+
+<div class="leg leg-left"></div>
+<div class="leg leg-right"></div>
+
+</div>
+
+</div>
+
+<div class="story-text">
+🏫 “On a normal college day... on the Kho Kho ground...  
+BUBU saw DUDU for the very first time...  
+And suddenly... the world felt different...” ❤️
+</div>
+
+</section>
+
+<!-- FRIENDSHIP -->
+
+<section>
+
+<div class="scene">
+
+<div class="character friend-boy">
+
+<div class="head">
+<div class="hair-boy"></div>
+<div class="eye left-eye"></div>
+<div class="eye right-eye"></div>
+<div class="smile"></div>
+</div>
+
+<div class="body-boy"></div>
+
+<div class="arm arm-left"></div>
+<div class="arm arm-right"></div>
+
+<div class="leg leg-left"></div>
+<div class="leg leg-right"></div>
+
+</div>
+
+<div class="character friend-girl">
+
+<div class="head">
+<div class="hair-girl"></div>
+<div class="eye left-eye"></div>
+<div class="eye right-eye"></div>
+<div class="smile"></div>
+</div>
+
+<div class="body-girl"></div>
+
+<div class="arm arm-left"></div>
+<div class="arm arm-right"></div>
+
+<div class="leg leg-left"></div>
+<div class="leg leg-right"></div>
+
+</div>
+
+</div>
+
+<div class="story-text">
+🤝 “Slowly... talks became conversations...  
+Conversations became habits...  
+And habits became the most beautiful friendship...” ✨
+</div>
+
+</section>
+
+<!-- LOVE -->
+
+<section>
+
+<div class="love-heart">❤️</div>
+
+<div class="story-text">
+💖 “Somewhere between late night talks...  
+care... fights... laughter... and missing each other...  
+Friendship quietly turned into LOVE...” 💕
+</div>
+
+</section>
+
+<!-- LONG DISTANCE -->
+
+<section>
+
+<div class="scene">
+
+<div class="connect"></div>
+
+<div class="character left-side">
+
+<div class="head">
+<div class="hair-boy"></div>
+<div class="eye left-eye"></div>
+<div class="eye right-eye"></div>
+<div class="smile"></div>
+</div>
+
+<div class="body-boy"></div>
+
+<div class="arm arm-left"></div>
+<div class="arm arm-right"></div>
+
+<div class="leg leg-left"></div>
+<div class="leg leg-right"></div>
+
+</div>
+
+<div class="character right-side">
+
+<div class="head">
+<div class="hair-girl"></div>
+<div class="eye left-eye"></div>
+<div class="eye right-eye"></div>
+<div class="smile"></div>
+</div>
+
+<div class="body-girl"></div>
+
+<div class="arm arm-left"></div>
+<div class="arm arm-right"></div>
+
+<div class="leg leg-left"></div>
+<div class="leg leg-right"></div>
+
+</div>
+
+</div>
+
+<div class="story-text">
+🌍 “Then came distance...  
+Different places... different cities...  
+But even miles couldn't separate two hearts that truly belonged together...” 💌
+</div>
+
+</section>
+
+<!-- FINAL -->
+
+<section>
+
+<h1 class="final-title">
+HAPPY BIRTHDAY MY DUDU ❤️
+</h1>
+
+<div class="hug">🧑‍❤️‍👧</div>
+
+<div class="kiss">🤗 😘 💋</div>
+
+<div class="story-text">
+✨ “Dear DUDU...  
+No matter what happens...  
+BUBU will always love you...  
+today... tomorrow... and forever...” ✨
+</div>
+
+</section>
+
+</div>
+
+<script>
+
+document.getElementById("pass").addEventListener("keypress",function(e){
+
+if(e.key==="Enter"){
+login();
+}
+
+});
+
+function login(){
+
+let user=document.getElementById("user").value.trim();
+
+let pass=document.getElementById("pass").value.trim();
+
+if(user==="DUDU" && pass==="143"){
+
+document.getElementById("loginPage").style.display="none";
+
+document.getElementById("storyPage").style.display="block";
+
+window.scrollTo(0,0);
+
+}
+else{
+
+document.getElementById("error").innerHTML=
+"❌ Wrong User ID or Password";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
